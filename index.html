@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arabic Keyboard</title>
+    <style>
+        body {
+            background: #ddd;
+            font-size: 1rem;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        .wrapper {
+            text-align: center;
+        }
+        .text {
+            font-size: 1.5rem;
+            padding: 5px;
+            border-radius: 4px;
+            border: 2px solid #ccc;
+            outline: none;
+            direction: rtl;
+            min-width: 300px;
+            min-height: 80px;
+            width: 40%;
+            margin: 10px 0 20px;
+        }
+        .line {
+            align-items: center;
+            display: flex;
+            justify-content: center;
+        }
+        .key {
+            font-size: 1.5rem;
+            background: white;
+            display: inline-block;
+            padding: 5px 10px 10px;
+            margin: 5px;
+            min-width: 50px;
+            max-height: 49px;
+            box-sizing: border-box;
+            border: 2px solid #676767;
+            text-align: center;
+            border-radius: 10px;
+            cursor: pointer;
+            -webkit-user-select: none;
+            user-select: none;
+            position: relative;
+            box-shadow: inset 0 -4px  0 rgba(0, 0, 0, 0.15);
+        }
+        .key:hover {
+            background: #ffffd4;
+        }
+        .key:active {
+            margin-top: 7px;
+            margin-bottom: 3px;
+        }
+        .key::after {
+            content: attr(en);
+            position: absolute;
+            font-size: .7rem;
+            left: 4px;
+            color: #aaa;
+        }
+        .number .key {
+            background: #ffe4e4;
+            display: none;
+        }
+        .number .key:hover {
+            background: #ffd3d2;
+        }
+        .harokat .key {
+            background: #e4f2ff;
+            display: none;
+        }
+        .harokat .key:hover {
+            background: #d2dbff;
+        }
+        .hamzawat .key {
+            background: #e4fff6;
+            display: none;
+        }
+        .hamzawat .key:hover {
+            background: #cff5e6;
+        }
+        .space {
+            width: 20%;
+            height: 48px;
+        }
+        .del {
+            background: #ff9898;
+            width: 70px;
+        }
+        .del:hover {
+            background: #ffb798;
+        }
+        .enter {
+            background: #98ffa4;
+            width: 90px;
+        }
+        .enter:hover {
+            background: #c6ff98;
+        }
+    </style>
+    <script src="jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <div class="wrapper">
+        <h1>Arabic Keyboard</h1>
+        
+        <div class="line">
+            <div class="key clear">Clear</div>
+            <textarea class="text" placeholder="هذا كتابٌ"></textarea>
+            <div class="key copy">Copy</div>
+        </div>
+        <div class="keyboard">
+            <div class="line number">
+                <div class="key">١</div>
+                <div class="key">٢</div>
+                <div class="key">٣</div>
+                <div class="key">٤</div>
+                <div class="key">٥</div>
+                <div class="key">٦</div>
+                <div class="key">٧</div>
+                <div class="key">٨</div>
+                <div class="key">٩</div>
+                <div class="key">٠</div>
+            </div>
+            <div class="line">
+                <div class="key" en="Q">ض</div>
+                <div class="key" en="W">ص</div>
+                <div class="key" en="E">ث</div>
+                <div class="key" en="R">ق</div>
+                <div class="key" en="T">ف</div>
+                <div class="key" en="Y">غ</div>
+                <div class="key" en="U">ع</div>
+                <div class="key" en="I">ه</div>
+                <div class="key" en="O">خ</div>
+                <div class="key" en="P">ح</div>
+                <div class="key" en="[">ج</div>
+            </div>
+            <div class="line">
+                <div class="key" en="A">ش</div>
+                <div class="key" en="S">س</div>
+                <div class="key" en="D">ي</div>
+                <div class="key" en="F">ب</div>
+                <div class="key" en="G">ل</div>
+                <div class="key" en="H">ا</div>    
+                <div class="key" en="J">ت</div>
+                <div class="key" en="K">ن</div>
+                <div class="key" en="L">م</div>
+                <div class="key" en=";">ك</div>
+                <div class="key" en="]">ة</div>
+            </div>
+            <div class="line">
+                <div class="key">ء</div>
+                <div class="key" en="Z">ظ</div>
+                <div class="key" en="X">ط</div>
+                <div class="key" en="C">ذ</div>
+                <div class="key" en="V">د</div>
+                <div class="key" en="B">ز</div>    
+                <div class="key" en="N">ر</div>
+                <div class="key" en="M">و</div>
+                <div class="key">ى</div>
+                <div class="key del">Del</div>
+            </div>
+            <div class="line hamzawat">
+                <div class="key">ئ</div>
+                <div class="key">أ</div>
+                <div class="key">إ</div>
+                <div class="key">آ</div>
+                <div class="key">ؤ</div>
+                <div class="key">ے</div>
+                <div class="key">ک</div>
+                <div class="key">هـ</div>
+            </div>
+            <div class="line harokat">
+                <div class="key">ـ</div>
+                <div class="key">ّ</div>
+                <div class="key">ْ</div>
+                <div class="key">ٌ</div>
+                <div class="key">ٍ</div>
+                <div class="key">ً</div>
+                <div class="key">ُ</div>
+                <div class="key">ِ</div>
+                <div class="key">َ</div>
+            </div>
+            <div class="line">
+                <div class="key num">١٢٣</div>
+                <div class="key hamza">ئؤأ</div>
+                <div class="key space"> </div>
+                <div class="key haroka">ً</div>
+                <div class="key enter">Enter</div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $("document").ready(function(){
+            $text = ""
+            $selStart = 0
+            
+            function updateText(text){
+                $(".text").val(text)
+                $(".text").focus
+                // console.log(text)
+            }
+
+            function updateSelStart(pos=null){
+                if(pos!=null){
+                    $selStart = pos
+                }else{
+                    $selStart = $(".text")[0].selectionStart
+                }
+                
+                // console.log("us: "+$selStart)
+                return $selStart
+            }
+
+            function insertCharToText(text, char, index){
+                updateSelStart(index+1)
+                return text.slice(0, index) + char + text.slice(index)
+            }
+
+            function deleteCharToText(text, index){
+                if(index>0){
+                    updateSelStart(index-1)
+                    return text.slice(0, index-1) + text.slice(index)
+                }else{
+                    return text
+                }
+            }
+
+            $(".num").click(function(){
+                $(".number .key").toggle("fast")
+            })
+            $(".haroka").click(function(){
+                $(".harokat .key").toggle("fast")
+            })
+            $(".hamza").click(function(){
+                $(".hamzawat .key").toggle("fast")
+            })
+            
+            $(".text").keyup(function(){
+                updateSelStart()
+            })
+
+            $(".text").mouseup(function(){
+                updateSelStart()
+            })
+            
+            $(".key:not(.del, .num, .haroka, .enter, .hamza, .clear, .copy)").click(function(){
+                // console.log($(this).html())
+                $text = $(".text").val();
+                $text = insertCharToText($text, $(this).html(), $selStart)
+                // console.log("start:" + $selStart)
+                updateText($text)
+            })
+
+            $(".del").click(function(){
+                $text = $(".text").val();
+                $text = deleteCharToText($text, $selStart)
+                // console.log("start:" + $selStart)
+                updateText($text)
+            })
+
+            $(".enter").click(function(){
+                $text = insertCharToText($text, '\r', $selStart)
+                updateText($text)
+            })
+
+            $(".clear").click(function(){
+                $text = ""
+                $selStart = 0
+                updateText($text)
+            })
+
+            $(".copy").click(function(){
+                $(".text").select()
+                document.execCommand("copy");
+            })
+        });
+    </script>
+</body>
+</html>
